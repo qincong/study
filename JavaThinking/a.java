@@ -16,7 +16,5 @@ Hello
 
 
 
-
-
 This is feature-A
 OK
