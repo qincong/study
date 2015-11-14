@@ -11,25 +11,30 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
-    private CheckBox checkBox1;
+public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
+    private RadioGroup radioGroup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_layout);
-        checkBox1=(CheckBox)findViewById(R.id.checkbox1);
-        checkBox1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked) {
-                    String text=checkBox1.getText().toString();
-                    Toast.makeText(getApplicationContext(),"已选中",Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        radioGroup=(RadioGroup)findViewById(R.id.RadioGroup1);
+        radioGroup.setOnCheckedChangeListener(this);
     }
 
 
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        switch (checkedId) {
+            case(R.id.radio1):
+                Toast.makeText(getApplicationContext(),"你当前选中了男孩",Toast.LENGTH_SHORT).show();
+                Log.i("tag","您现在选中了男孩");
+                break;
+            case R.id.radio2:
+                Toast.makeText(getApplicationContext(),"你当前选中了男孩",Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
 }
